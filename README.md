@@ -22,8 +22,7 @@ A simple Student Management System built using **Django** and **HTML**.
 3. Install Django
 4. Run migrations
 5. Start the server
-6. http://127.0.0.1:8000/
-
+6. 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
