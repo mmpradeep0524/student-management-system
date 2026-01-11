@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Update Student</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="name" value="{{ student.name }}" placeholder="Student Name" required>
+        <input type="number" name="age" value="{{ student.age }}" placeholder="Age" required>
+        <input type="email" name="email" value="{{ student.email }}" placeholder="Email" required>
+
+        <select name="course" required>
+            {% for course in courses %}
+                <option value="{{ course.id }}" {% if student.course.id == course.id %}selected{% endif %}>
+                    {{ course.name }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Update Student</button>
+    </form>
+
+    <a href="/" class="back-link">← Back to Student List</a>
+</div>
+
+</body>
+</html>

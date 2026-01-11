@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #604e80;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgb(76, 194, 210);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Student</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Student Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="email" name="email" placeholder="Email" required>
+
+        <select name="course" required>
+            <option value="">-- Select Course --</option>
+            {% for course in courses %}
+            <option value="{{ course.id }}">{{ course.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <a href="/" class="back-link">← Back to Student List</a>
+</div>
+
+</body>
+</html>

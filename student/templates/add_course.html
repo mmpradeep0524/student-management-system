@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Course</title>
+    <style>
+        /* ===== Global Styles ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #c0e106, #0c31d9);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            background: rgb(249, 101, 3);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        /* ===== Headings ===== */
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* ===== Input Fields ===== */
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.5);
+            outline: none;
+        }
+
+        /* ===== Buttons ===== */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* ===== Back Link ===== */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Course</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Course Name" required>
+        <button type="submit">Add Course</button>
+    </form>
+
+    <a href="/" class="back-link">← Back to Home</a>
+</div>
+
+</body>
+</html>
